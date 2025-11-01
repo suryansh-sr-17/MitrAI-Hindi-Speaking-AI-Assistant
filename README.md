@@ -178,6 +178,14 @@ python -m http.server 8000
 
 ---
 
+## 📸 Application Preview
+
+![](screenshots/ss1.png)
+
+![](screenshots/ss2.png)
+
+---
+
 ## 📁 **Project Structure**
 
 <div align="left">
