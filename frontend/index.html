@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hindi AI Assistant - Minimal interface for Hindi conversation">
+    <meta name="keywords" content="Hindi, AI, Assistant, Voice, Speech Recognition, हिंदी, सहायक">
+    <title>Hindi AI Assistant | हिंदी AI सहायक</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎤</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Hindi AI Assistant">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- High contrast mode toggle -->
+    <button id="highContrastToggle" class="accessibility-toggle high-contrast-toggle" 
+            aria-label="Toggle high contrast mode" title="Toggle high contrast mode">
+        <span aria-hidden="true">🌓</span>
+    </button>
+    
+    <!-- Main Application Container -->
+    <div class="app-container">
+        <!-- Two-Panel Layout -->
+        <main class="two-panel-layout" id="main-content" role="main">
+            
+            <!-- Left Panel: Chat Interface -->
+            <section class="left-panel chat-panel" aria-label="Chat Interface">
+                <!-- Chat Interface Header -->
+                <div class="chat-header">
+                    <h1 class="app-title">हिंदी AI सहायक</h1>
+                    <p class="app-subtitle">Hindi AI Assistant</p>
+                </div>
+                
+                <!-- Chat Messages Container -->
+                <div class="chat-container" id="chatContainer" role="log" aria-live="polite" aria-label="Conversation history">
+                    <!-- Welcome Message (will be added by JavaScript) -->
+                    <div class="message-container welcome-message" id="welcomeMessage">
+                        <div class="message agent-message">
+                            <div class="message-avatar">🤖</div>
+                            <div class="message-content">
+                                <p>नमस्ते! मैं आपका हिंदी AI सहायक हूं।</p>
+                                <p>बातचीत शुरू करने के लिए:</p>
+                                <ul>
+                                    <li>दाईं ओर माइक बटन दबाएं और बोलें</li>
+                                    <li>या नीचे ऑडियो फ़ाइल अपलोड करें</li>
+                                </ul>
+                                <p><em>Hello! I'm your Hindi AI Assistant. Press the mic button on the right and speak, or upload an audio file below.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Dynamic messages will be added here -->
+                </div>
+                
+                <!-- Audio Upload Button -->
+                <div class="audio-upload-section">
+                    <label for="audioFile" class="audio-upload-button" tabindex="0" role="button" 
+                           aria-label="Upload audio file">
+                        <span class="upload-icon">📁</span>
+                        <span class="upload-text">Upload Audio File</span>
+                        <span class="upload-text-hindi">ऑडियो फ़ाइल अपलोड करें</span>
+                    </label>
+                    <input type="file" id="audioFile" accept=".mp3,.wav,.m4a,.webm,.ogg" 
+                           class="file-input" aria-label="Audio file input">
+                </div>
+            </section>
+            
+            <!-- Right Panel: Camera & Microphone Controls -->
+            <section class="right-panel control-panel" aria-label="Camera and Microphone Controls">
+                
+                <!-- Camera Feed Section (Upper Half) -->
+                <div class="camera-section">
+                    <div class="camera-container">
+                        <video id="cameraFeed" class="camera-feed" autoplay muted playsinline 
+                               aria-label="Camera feed for face detection"></video>
+                        <div class="camera-overlay">
+                            <div class="face-detection-status" id="faceDetectionStatus" 
+                                 role="status" aria-live="polite">
+                                <span class="status-icon" id="statusIcon">👁️</span>
+                                <span class="status-text" id="statusText">Camera initializing...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Microphone Controls Section (Lower Half) -->
+                <div class="microphone-section">
+                    <!-- Circular Microphone Button -->
+                    <div class="mic-button-container">
+                        <button id="micButton" class="mic-button" type="button"
+                                aria-label="Toggle microphone recording" aria-pressed="false">
+                            <div class="mic-icon">🎤</div>
+                            <div class="audio-waves" id="audioWaves" aria-hidden="true">
+                                <div class="wave wave-1"></div>
+                                <div class="wave wave-2"></div>
+                                <div class="wave wave-3"></div>
+                                <div class="wave wave-4"></div>
+                            </div>
+                        </button>
+                    </div>
+                    
+                    <!-- Real-time Transcription Display -->
+                    <div class="transcription-display" id="transcriptionDisplay" 
+                         role="status" aria-live="assertive" aria-label="Real-time transcription">
+                        <div class="transcription-text" id="transcriptionText"></div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        
+        <!-- Hidden Elements for Backend Processing -->
+        <div class="hidden-elements" aria-hidden="true">
+            <!-- Hidden video element for face detection processing -->
+            <video id="videoElement" autoplay muted style="display: none;"></video>
+            
+            <!-- Audio playback element -->
+            <audio id="responseAudio" preload="metadata"></audio>
+        </div>
+        
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay" style="display: none;" 
+             role="status" aria-live="assertive">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <div class="loading-text" id="loadingText">Processing...</div>
+            </div>
+        </div>
+        
+        <!-- Error Overlay -->
+        <div class="error-overlay" id="errorOverlay" style="display: none;" 
+             role="alert" aria-live="assertive">
+            <div class="error-content">
+                <div class="error-icon">⚠️</div>
+                <div class="error-text" id="errorText"></div>
+                <button id="errorCloseBtn" class="error-close-btn" type="button">
+                    Close | बंद करें
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="sounds/mic-start.js"></script>
+    <script src="sounds/mic-stop.js"></script>
+    <script src="error-recovery.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

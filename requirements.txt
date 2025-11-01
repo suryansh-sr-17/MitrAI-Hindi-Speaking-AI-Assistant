@@ -1,0 +1,40 @@
+# Core Flask dependencies
+Flask==2.3.3
+Flask-CORS==4.0.0
+
+# Audio processing
+librosa==0.10.1
+soundfile==0.12.1
+pydub==0.25.1
+scipy==1.11.4
+
+# Speech-to-Text
+# Whisper (kept for fallback)
+openai-whisper==20231117
+torch>=2.2.0
+torchaudio>=2.2.0
+
+# Google Web Speech (new primary STT)
+SpeechRecognition==3.10.0
+pyaudio==0.2.11
+
+# Text-to-Speech (Google TTS)
+gtts==2.5.4
+pydub==0.25.1
+
+# Response Generation (LLM APIs)
+google-generativeai==0.3.2
+openai>=2.6.0
+
+# Computer Vision (Face Detection)
+opencv-python==4.8.1.78
+numpy==1.24.3
+
+# Utilities
+python-dotenv==1.0.0
+requests==2.31.0
+Pillow==10.0.1
+
+# Development dependencies
+pytest==7.4.3
+pytest-flask==1.3.0

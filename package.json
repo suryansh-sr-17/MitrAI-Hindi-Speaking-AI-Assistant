@@ -1,0 +1,56 @@
+{
+  "name": "mitrai-hindi-speaking-ai-assistant",
+  "version": "1.0.0",
+  "description": "Next-Generation Conversational AI for Hindi Speakers",
+  "main": "frontend/app.js",
+  "scripts": {
+    "start": "python backend/app.py",
+    "dev": "python backend/app.py",
+    "serve": "python -m http.server 8000",
+    "lint": "eslint frontend/*.js",
+    "lint:fix": "eslint frontend/*.js --fix",
+    "format": "prettier --write frontend/*.{js,css,html}",
+    "format:check": "prettier --check frontend/*.{js,css,html}",
+    "test": "echo \"Frontend tests not implemented yet\" && exit 0",
+    "build": "echo \"No build step required for vanilla JS\" && exit 0",
+    "deploy": "vercel --prod",
+    "deploy:preview": "vercel"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suryansh-sr-17/MitrAI-Hindi-Speaking-AI-Assistant.git"
+  },
+  "keywords": [
+    "hindi",
+    "ai",
+    "assistant",
+    "speech-recognition",
+    "text-to-speech",
+    "conversational-ai",
+    "machine-learning",
+    "natural-language-processing",
+    "voice-interface",
+    "accessibility"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/suryansh-sr-17/MitrAI-Hindi-Speaking-AI-Assistant/issues"
+  },
+  "homepage": "https://github.com/suryansh-sr-17/MitrAI-Hindi-Speaking-AI-Assistant#readme",
+  "devDependencies": {
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "@eslint/js": "^8.55.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
