@@ -29,7 +29,7 @@
 
 ### 🎯 **Core AI Features**
 - 🎤 **Advanced Speech Recognition**  
-  *Real-time Hindi STT with OpenAI Whisper*
+  *Real-time Hindi STT with Google Web Speech & OpenAI Whisper*
 - 🤖 **Intelligent Conversations**  
   *Context-aware responses via Google Gemini*
 - 🔊 **Natural Speech Synthesis**  
