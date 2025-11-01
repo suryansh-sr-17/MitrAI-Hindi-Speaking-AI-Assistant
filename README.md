@@ -18,7 +18,6 @@
 
 *A sophisticated conversational AI system that enables natural voice interactions in Hindi. Powered by cutting-edge AI technologies including OpenAI Whisper, Google Gemini, and advanced computer vision.*
 
-![Demo GIF](https://via.placeholder.com/800x400/667eea/ffffff?text=🎤+Hindi+AI+Assistant+Demo)
 
 </div>
 
@@ -45,7 +44,7 @@
 - 🎨 **Minimal Interface**  
   *Clean two-panel design*
 - ♿ **Accessibility First**  
-  *WCAG 2.1 AA compliant*
+  *Easy to access and use*
 - 🔄 **Robust Error Handling**  
   *Graceful degradation & fallbacks*
 - 🎵 **Interactive Feedback**  
@@ -181,7 +180,7 @@ python -m http.server 8000
 
 ## 📁 **Project Structure**
 
-<div align="center">
+<div align="left">
 
 ```
 🎤 hindi-ai-assistant/
@@ -362,8 +361,6 @@ Content-Type: audio/mpeg
 ### ☁️ **One-Click Deploy**
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/suryansh-sr-17/MitrAI-Hindi-Speaking-AI-Assistant)
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/suryansh-sr-17/MitrAI-Hindi-Speaking-AI-Assistant)
-[![Deploy to Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/suryansh-sr-17/MitrAI-Hindi-Speaking-AI-Assistant)
 
 </div>
 
